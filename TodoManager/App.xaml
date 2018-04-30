@@ -1,0 +1,8 @@
+﻿<Application x:Class="TodoManager.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:TodoManager">
+	<Application.Resources>
+		<ResourceDictionary Source="Style/Button.xaml" />
+	</Application.Resources>
+</Application>

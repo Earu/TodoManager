@@ -1,0 +1,52 @@
+﻿<Window x:Class="TodoManager.Windows.ManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoManager.Windows"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Title="Manager" Height="300" Width="470">
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="#191919"/>
+    </Window.Background>
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Black" Opacity="1" RenderingBias="Performance" />
+    </Window.Effect>
+    <Grid Background="#222222" Margin="5">
+        <Border BorderBrush="#444444" BorderThickness="4"/>
+		<Button Content="+" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="40" Padding="-1,-18,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="7,110,0,150" Click="OnAddTodo">
+			<Button.ToolTip>
+				<TextBlock>Create a new todo</TextBlock>
+			</Button.ToolTip>
+		</Button>
+		<Button Content="-" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="40" Padding="-1,-18,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="7,160,0,100" Click="OnRemoveTodo">
+			<Button.ToolTip>
+				<TextBlock>Remove the selected todo</TextBlock>
+			</Button.ToolTip>
+		</Button>
+		<ItemsControl Name="ICTodo" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="-280,50,0,10"/>
+		<Button Content="⇒" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="145,110,0,150" Click="TodoToOnGoing"/>
+		<Button Content="⇐" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="145,160,0,100" Click="OnGoingToTodo"/>
+        <ItemsControl Name="ICOnGoing" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="0,50,0,10"/>
+		<Button Content="⇒" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="285,107,0,153" Click="OnGoingToDone"/>
+		<Button Content="⇐" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="285,157,0,103" Click="DoneToOnGoing"/>
+        <ItemsControl Name="ICDone" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="280,50,0,10"/>
+		<Button Content="⟲" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="423,0,0,0" Click="OnClearDone">
+			<Button.ToolTip>
+				<TextBlock>Clear the done todos</TextBlock>
+			</Button.ToolTip>
+		</Button>
+		<Border Margin="-280,-237,0,0" Width="100" Height="35" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock TextAlignment="Center" Padding="0,5,0,0" Text="TO DO!" Background="#333333" FontSize="18" FontWeight="ExtraBold" Foreground="Gray"/>
+        </Border>
+        <Border Margin="0,-237,0,0" Width="100" Height="35" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock Padding="0,5,0,0" TextAlignment="Center" Text="ON GOING" Background="#333333" FontSize="18" FontWeight="ExtraBold" Foreground="Gray"/>
+        </Border>
+        <Border Margin="280,-237,0,0" Width="100" Height="35" BorderBrush="Gray" BorderThickness="1">
+            <TextBlock TextAlignment="Center" Padding="0,5,0,0" Text="DONE" Background="#333333" FontSize="18" FontWeight="ExtraBold" Foreground="Gray"/>
+        </Border>
+    </Grid>
+</Window>
