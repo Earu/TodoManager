@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ProjectManager.Controls.TodoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProjectManager.Controls"
+             mc:Ignorable="d">
+    <Grid>
+		<Rectangle Name="RCBackground" Fill="#222222" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MouseLeftButtonDown="OnSelected"/>
+		<TextBlock Height="20" Padding="5,0,5,0" IsHitTestVisible="False" Name="TBName" FontSize="12" FontWeight="Bold" Foreground="Gray" Text="???"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,52 @@
+﻿<Window x:Class="TodoManager.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TodoManager.Windows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Title="Todos" Height="150" Width="150">
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="#191919"/>
+    </Window.Background>
+    <Grid Height="100" Width="100">
+        <Ellipse Fill="#222222" Stroke="#444444" StrokeThickness="4" Margin="5" MouseLeftButtonDown="OnClick">
+            <Ellipse.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="Black" Opacity="1" RenderingBias="Performance" />
+            </Ellipse.Effect>
+        </Ellipse>
+        <Rectangle IsHitTestVisible="False" Fill="#444444" Width="50" Height="10"></Rectangle>
+        <Rectangle IsHitTestVisible="False" Fill="#444444" Width="50" Height="10" Margin="25,30,25,60"/>
+        <Rectangle IsHitTestVisible="False" Fill="#444444" Width="50" Height="10" Margin="25,60,25,30"/>
+        <Ellipse Margin="67,-64,0,0" Width="30" Height="30" Fill="#222222" Stroke="Orange" MouseLeftButtonDown="OnDrag">
+            <Ellipse.ToolTip>
+                <TextBlock>Drag</TextBlock>
+            </Ellipse.ToolTip>
+            <Ellipse.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="Orange" Opacity="1" RenderingBias="Performance" />
+            </Ellipse.Effect>
+        </Ellipse>
+        <Ellipse Margin="68,68,2,2" Width="30" Height="30" Fill="#222222" Stroke="Red" MouseLeftButtonDown="OnClose">
+            <Ellipse.ToolTip>
+                <TextBlock>Close</TextBlock>
+            </Ellipse.ToolTip>
+            <Ellipse.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="Red" Opacity="1" RenderingBias="Performance" />
+            </Ellipse.Effect>
+        </Ellipse>
+        <Ellipse Margin="-5,35,75,35" Width="30" Height="30" Fill="#222222" Stroke="CadetBlue" MouseLeftButtonDown="OnClearTodos">
+            <Ellipse.ToolTip>
+                <TextBlock>Clear Todos</TextBlock>
+            </Ellipse.ToolTip>
+            <Ellipse.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="CadetBlue" Opacity="1" RenderingBias="Performance" />
+            </Ellipse.Effect>
+        </Ellipse> 
+        <TextBlock Margin="63,-84,0,0" HorizontalAlignment="Left" Height="40" Width="40" TextAlignment="Center" IsHitTestVisible="False" FontSize="40" Foreground="Orange" Text="•" />
+        <TextBlock Margin="63,72,0,0" HorizontalAlignment="Left" Height="40" Width="40" TextAlignment="Center" IsHitTestVisible="False" FontSize="15" Foreground="Red" Text="X" />
+        <TextBlock Margin="-11,1,0,0" HorizontalAlignment="Left" Height="40" Width="40" TextAlignment="Center" IsHitTestVisible="False" FontSize="25" Foreground="CadetBlue" Text="⟲"/>
+    </Grid>
+</Window>
