@@ -21,14 +21,31 @@ namespace TodoManager.Windows
     /// </summary>
     public partial class AddTodoWindow : Window
     {
-        private App _Application;
         private ManagerWindow _Manager;
+        private bool _IsNewTodo;
+        private Todo _Todo;
 
-        internal AddTodoWindow(App app, ManagerWindow win)
+        internal AddTodoWindow(ManagerWindow win)
         {
-            this._Application = app;
-            this._Manager = win;
+            this._Manager     = win;
+            this._IsNewTodo   = true;
+            this._Todo        = null;
             this.InitializeComponent();
+        }
+
+        internal AddTodoWindow(ManagerWindow win, Todo todo)
+        {
+            this._Manager = win;
+            this._IsNewTodo = false;
+            this._Todo = todo;
+            this.InitializeComponent();
+            this.TBName.Text = todo.Name;
+            this.TBDescription.Text = todo.Description;
+            if (todo.Deadline.HasValue)
+            {
+                this.CBDeadline.IsChecked = true;
+                this.DPDeadline.SelectedDate = todo.Deadline.Value;
+            }
         }
 
         private void OnCancel(object sender, RoutedEventArgs e)
@@ -53,15 +70,29 @@ namespace TodoManager.Windows
             string desc = this.TBDescription.Text;
             desc = string.IsNullOrWhiteSpace(desc) ? null : desc.Trim();
             DateTime? deadline = null;
-            if(this.CBDeadline.IsChecked.HasValue && this.CBDeadline.IsChecked.Value)
+            if (this.CBDeadline.IsChecked.HasValue && this.CBDeadline.IsChecked.Value)
                 deadline = this.DPDeadline.SelectedDate;
 
-            Todo todo = new Todo(name, desc, deadline);
-            this._Application.Todos.Add(todo);
             this._Manager.Visibility = Visibility.Visible;
 
-            TodoControl ctrl = new TodoControl(todo,this._Manager);
-            this._Manager.ICTodo.Items.Add(ctrl);
+            if (this._IsNewTodo)
+            {
+                Todo todo = new Todo(name, desc, deadline);
+                this._Manager.Application.Todos.Add(todo);
+
+                TodoControl ctrl = new TodoControl(todo, this._Manager);
+                this._Manager.ICTodo.Items.Add(ctrl);
+            }
+            else
+            {
+                Todo todo        = this._Manager.Application.Todos.First(x => x.ID == this._Todo.ID);
+                todo.Name        = name;
+                todo.Description = desc;
+                todo.Deadline    = deadline;
+
+                TodoControl ctrl = this._Manager.SelectedControl;
+                ctrl.TBName.Text = name;
+            }
 
             this.Close();
         }

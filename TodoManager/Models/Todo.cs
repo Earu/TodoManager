@@ -36,11 +36,11 @@ namespace TodoManager.Models
             //This is for serializing
         }
 
-        public string       Name        { get => this._Name;     set => this._Name        = value; }
-        public string       Description { get => this._Name;     set => this._Description = value; }
-        public DateTime?    Deadline    { get => this._Deadline; set => this._Deadline    = value; }
-        public TodoState    State       { get => this._State;    set => this._State       = value; }
-        public ulong        ID          { get => this._ID;       set => this._ID          = value; }
+        public string       Name        { get => this._Name;        set => this._Name        = value; }
+        public string       Description { get => this._Description; set => this._Description = value; }
+        public DateTime?    Deadline    { get => this._Deadline;    set => this._Deadline    = value; }
+        public TodoState    State       { get => this._State;       set => this._State       = value; }
+        public ulong        ID          { get => this._ID;          set => this._ID          = value; }
 
         internal bool TrySerialize(out string json)
         {

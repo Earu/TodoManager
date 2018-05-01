@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TodoManager.Models;
 using TodoManager.Windows;
 
@@ -42,6 +31,11 @@ namespace ProjectManager.Controls
             if (this._Manager.SelectedControl != null)
             {
                 this._Manager.SelectedControl.RCBackground.Fill = (SolidColorBrush)(cvter.ConvertFrom("#222222"));
+                if (this._Manager.SelectedControl._Todo.ID == this._Todo.ID)
+                {
+                    AddTodoWindow win = new AddTodoWindow(this._Manager, this._Todo);
+                    win.ShowDialog();
+                }
             }
             this._Manager.SelectedControl = this;
         }
