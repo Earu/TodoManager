@@ -27,13 +27,25 @@
 				<TextBlock>Remove the selected todo</TextBlock>
 			</Button.ToolTip>
 		</Button>
-		<ItemsControl Name="ICTodo" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="-280,50,0,10"/>
+		<Border BorderBrush="Gray" BorderThickness="1" Width="100" Height="230" Margin="-280,50,0,10">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+				<ItemsControl Name="ICTodo" />
+			</ScrollViewer>
+		</Border>
 		<Button Content="⇒" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="145,110,0,150" Click="TodoToOnGoing"/>
 		<Button Content="⇐" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="145,160,0,100" Click="OnGoingToTodo"/>
-        <ItemsControl Name="ICOnGoing" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="0,50,0,10"/>
+		<Border BorderBrush="Gray" BorderThickness="1" Width="100" Height="230" Margin="0,50,0,10">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+				<ItemsControl Name="ICOnGoing" />
+			</ScrollViewer>
+		</Border>
 		<Button Content="⇒" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="285,107,0,153" Click="OnGoingToDone"/>
 		<Button Content="⇐" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="285,157,0,103" Click="DoneToOnGoing"/>
-        <ItemsControl Name="ICDone" Width="100" Height="230" BorderBrush="Gray" BorderThickness="1" Margin="280,50,0,10"/>
+		<Border BorderBrush="Gray" BorderThickness="1" Width="100" Height="230" Margin="280,50,0,10">
+			<ScrollViewer VerticalScrollBarVisibility="Hidden">
+				<ItemsControl Name="ICDone" />
+			</ScrollViewer>
+		</Border>
 		<Button Content="⟲" Style="{DynamicResource ResourceKey=BTNGray}" FontSize="30" Padding="-1,-10,0,0" Background="#222222" BorderBrush="Transparent" Foreground="Gray" Height="30" Width="30" HorizontalAlignment="Left" Margin="423,0,0,0" Click="OnClearDone">
 			<Button.ToolTip>
 				<TextBlock>Clear the done todos</TextBlock>

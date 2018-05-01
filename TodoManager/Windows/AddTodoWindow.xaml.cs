@@ -1,4 +1,4 @@
-﻿using ProjectManager.Controls;
+﻿using TodoManager.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +51,8 @@ namespace TodoManager.Windows
         private void OnCancel(object sender, RoutedEventArgs e)
         {
             this._Manager.Visibility = Visibility.Visible;
+            this._Manager.CanClose = true;
+            this._Manager.Activate();
             this.Close();
         }
 
