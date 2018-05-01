@@ -25,10 +25,11 @@ namespace TodoManager.Windows
         }
 
         internal TodoControl SelectedControl { get => this._SelectedControl; set => this._SelectedControl = value; }
+        internal App Application { get => this._Application; }
 
         private void OnAddTodo(object sender, RoutedEventArgs e)
         {
-            AddTodoWindow win = new AddTodoWindow(this._Application, this)
+            AddTodoWindow win = new AddTodoWindow(this)
             {
                 Top = this.Top,
                 Left = this.Left
