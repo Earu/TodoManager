@@ -4,7 +4,7 @@ using System.Windows.Media;
 using TodoManager.Models;
 using TodoManager.Windows;
 
-namespace ProjectManager.Controls
+namespace TodoManager.Controls
 {
     /// <summary>
     /// Interaction logic for TodoControl.xaml
@@ -35,6 +35,8 @@ namespace ProjectManager.Controls
                 {
                     AddTodoWindow win = new AddTodoWindow(this._Manager, this._Todo);
                     win.ShowDialog();
+                    win.Left = this._Manager.Left;
+                    win.Top = this._Manager.Top;
                 }
             }
             this._Manager.SelectedControl = this;

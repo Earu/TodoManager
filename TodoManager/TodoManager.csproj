@@ -68,6 +68,9 @@
     <Compile Include="Windows\AddTodoWindow.xaml.cs">
       <DependentUpon>AddTodoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ClearProjectsWindow.xaml.cs">
+      <DependentUpon>ClearProjectsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ExceptionWindow.xaml.cs">
       <DependentUpon>ExceptionWindow.xaml</DependentUpon>
     </Compile>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AddTodoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ClearProjectsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

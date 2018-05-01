@@ -1,4 +1,4 @@
-﻿using ProjectManager.Controls;
+﻿using TodoManager.Controls;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,16 +16,29 @@ namespace TodoManager.Windows
     {
         private App _Application;
         private TodoControl _SelectedControl;
+        private bool _CanClose;
 
         public ManagerWindow(App app)
         {
             this._Application = app;
             this._SelectedControl = null;
+            this._CanClose = true;
             this.InitializeComponent();
+            this.Deactivated += this.OnDeactivated;
         }
 
         internal TodoControl SelectedControl { get => this._SelectedControl; set => this._SelectedControl = value; }
-        internal App Application { get => this._Application; }
+        internal bool        CanClose        { get => this._CanClose;        set => this._CanClose        = value; }
+        internal App         Application     { get => this._Application; }
+
+        private void OnDeactivated(object sender, System.EventArgs e)
+        {
+            if (this._CanClose)
+            {
+                this.Close();
+                ((MainWindow)this._Application.MainWindow).Manager = null;
+            }
+        }
 
         private void OnAddTodo(object sender, RoutedEventArgs e)
         {
@@ -34,6 +47,7 @@ namespace TodoManager.Windows
                 Top = this.Top,
                 Left = this.Left
             };
+            this._CanClose = false;
             this.Visibility = Visibility.Hidden;
             win.ShowDialog();
         }

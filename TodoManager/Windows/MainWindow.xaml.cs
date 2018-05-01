@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using TodoManager.Models;
-using ProjectManager.Controls;
+using TodoManager.Controls;
 using System.IO;
 
 namespace TodoManager.Windows
@@ -23,6 +23,8 @@ namespace TodoManager.Windows
             this.Topmost = true;
             this.Closing += this.OnClosing;
         }
+
+        internal ManagerWindow Manager { get => this._Manager; set => this._Manager = value; }
 
         private void OnClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -102,17 +104,13 @@ namespace TodoManager.Windows
 
         private void OnClearTodos(object sender, MouseButtonEventArgs e)
         {
-            string[] files = Directory.GetFiles("Todos");
-            foreach(string path in files)
-                File.Delete(path);
-            this._Application.Todos.Clear();
-
-            if(this._Manager != null)
+            ClearProjectsWindow win = new ClearProjectsWindow(this._Application, this._Manager)
             {
-                this._Manager.ICTodo.Items.Clear();
-                this._Manager.ICOnGoing.Items.Clear();
-                this._Manager.ICDone.Items.Clear();
-            }
+                Top = this.Top,
+                Left = this.Left - 75,
+                Topmost = true,
+            };
+            win.ShowDialog();
         }
     }
 }
